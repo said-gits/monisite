@@ -33,6 +33,8 @@ dependencies:
   skeleton_text: ^3.0.0
   url_launcher: ^6.1.7
   uuid: ^3.0.7
+  cached_network_image: ^3.2.3
+
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +56,7 @@ flutter:
     - images/laptop.png
     - images/user.png
     - images/icon_edit.png
+    - images/placeholder.png
 
   fonts:
     - family: Pacifico

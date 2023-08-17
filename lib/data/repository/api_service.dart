@@ -6,7 +6,7 @@ import 'dart:io';
 
 import 'package:uuid/uuid.dart';
 
-const BASE_URL = "https://monisite.errltd.xyz";
+const BASE_URL = "https://toraga.errltd.xyz";
 
 class ApiService {
   String clusterName = "Bekasi";
@@ -118,6 +118,23 @@ class ApiService {
     }
   }
 
+  Future<Response?> getFaceDetection(int siteId, 
+      String token, int limit) async {
+    try {
+      final response = await _dio.get(
+          BASE_URL +
+              "/api/v1/face?site_id=$siteId&limit=$limit",
+          options: Options(headers: {"Authorization": "Bearer $token"}));
+      return response;
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        return e.response;
+      } else {
+        throw e;
+      }
+    }
+  }
+
   Future<Response?> getListNotification(String token) async {
     try {
       final response = await _dio.get(BASE_URL + "/api/v1/notification",
@@ -166,7 +183,7 @@ class ApiService {
   Future<Response?> postLogin(String email, String password) async {
     try {
       final response = await _dio.post(BASE_URL + "/api/v1/login",
-          data: {"email": email, "password": password, "role": 1});
+          data: {"email": email, "password": password});
 
       return response;
     } on DioError catch (e) {

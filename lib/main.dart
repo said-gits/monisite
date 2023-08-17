@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'domain/bloc/face_detection_bloc/face_detection_bloc.dart';
 import 'domain/bloc/list_report_bloc/list_report_bloc.dart';
 import 'domain/bloc/notif_bloc/notif_bloc.dart';
 import 'domain/bloc/site_bloc/site_bloc.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           BlocProvider<SiteBloc>(create: (context) => SiteBloc()),
           BlocProvider<NotifBloc>(create: (context) => NotifBloc()),
           BlocProvider<ListReportBloc>(create: (context) => ListReportBloc()),
+          BlocProvider<FaceDetectionBloc>(create: (context) => FaceDetectionBloc()),
         ],
         child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
